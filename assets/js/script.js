@@ -773,7 +773,7 @@ function getStationData(layer, source){
 		weight: 10
 	});
 	info.update(layer.feature.properties);
-	var categories = d3.keys(csvMap['AR-955'][0]);
+	var categories = d3.keys(csvMap['AR-959'][0]);
 	var index = categories.indexOf('county');
 	categories.splice(index, 1);
 	index = categories.indexOf('ID');
