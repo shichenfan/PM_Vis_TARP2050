@@ -92,7 +92,7 @@ var searchHighlightIds = [];
 
 var xVariablePreset = 'current_score'
 var yVariablePreset = 'future_score'
-var rVariablePreset = 'bc_2050'
+var rVariablePreset = 'bc_2040'
 var colorVariablePreset = 'total_cost'
 var defaultHex = "#f768a1";
 var variableMap = {
@@ -120,9 +120,9 @@ var variableMap = {
 		"column_chart": false,
 		"format": "dollar"
 	},
-	"benefit_2050":{
-		"name": "2050 Benefit in Millions",
-		"description": "Monetary benefit of the project in millions if it is built in 2050",
+	"benefit_2040":{
+		"name": "2040 Benefit in Millions",
+		"description": "Monetary benefit of the project in millions if it is built in 2040",
 		"column_chart": false,
 		"format": "dollar"
 	},
@@ -132,9 +132,9 @@ var variableMap = {
 		"column_chart": false,
 		"format": "decimal"
 	},
-	"bc_2050":{
-		"name": "2050 Benefit/Cost",
-		"description": "Benefit/Cost of project if it were built in 2050 ",
+	"bc_2040":{
+		"name": "2040 Benefit/Cost",
+		"description": "Benefit/Cost of project if it were built in 2040 ",
 		"column_chart": false,
 		"format": "decimal"
 	},
@@ -156,15 +156,15 @@ var variableMap = {
 		"column_chart": true,
 		"format": "decimal"
 	},
-	"current_buffer_index":{
-		"name": "Current Buffer Index",
-		"description": "Buffer Index",
+	"current_reliability":{
+		"name": "Current Reliability Index",
+		"description": "Trip reliability on project link using Buffer Index",
 		"column_chart": true,
 		"format": "decimal"
 	},
-	"current_ej":{
+	"current_eta":{
 		"name": "Current Equity Index",
-		"description": "Whether or not project lies within an EJ-Top2Tiers",
+		"description": "Whether or not project lies within an ETA",
 		"column_chart": true,
 		"format": "decimal"
 	},
@@ -773,7 +773,7 @@ function getStationData(layer, source){
 		weight: 10
 	});
 	info.update(layer.feature.properties);
-	var categories = d3.keys(csvMap['AR-955'][0]);
+	var categories = d3.keys(csvMap['AR-959'][0]);
 	var index = categories.indexOf('county');
 	categories.splice(index, 1);
 	index = categories.indexOf('ID');
@@ -782,11 +782,11 @@ function getStationData(layer, source){
 	categories.splice(index, 1);
 	index = categories.indexOf('benefit_2015');
 	categories.splice(index, 1);
-	index = categories.indexOf('benefit_2050');
+	index = categories.indexOf('benefit_2040');
 	categories.splice(index, 1);
 	index = categories.indexOf('bc_2015');
 	categories.splice(index, 1);
-	index = categories.indexOf('bc_2050');
+	index = categories.indexOf('bc_2040');
 	categories.splice(index, 1);
 	index = categories.indexOf('current_score');
 	categories.splice(index, 1);
@@ -816,7 +816,7 @@ function getStationData(layer, source){
 		data: data,
 		county: countyData[county]
 	};
-	var variableList = ['current_score', 'future_score', 'total_cost', 'bc_2015', 'bc_2050'];
+	var variableList = ['current_score', 'future_score', 'total_cost', 'bc_2015', 'bc_2040'];
 	drawBarChart(chartData, 'totals');
 	var summaryString = getSummaryString(variableList, csvMap[id][0]);
 	$('#data-summary')
